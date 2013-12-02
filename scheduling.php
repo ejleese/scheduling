@@ -1,6 +1,6 @@
 <!-- scheduling.php  -  main scheduling page -->
 <!-- purpose: display menu for navigation -->
-<!-- testing onedir -->
+
 <html>
 <?php include 'include/schedule_types.php'; ?>
 
