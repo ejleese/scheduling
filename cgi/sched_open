@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# sched_open
+# purpose: builds schedule's open list
+# usage: linked from include/menu.html
+#
+
+. ./fpsetenv.bat
+
+# GET PARAMETER FROM QUERY STRING
+SCHED=`echo "$QUERY_STRING" | sed -n 's/^.*sched=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"`
+DESC=`echo "$QUERY_STRING" | sed -n 's/^.*desc=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"`
+
+HTML_RESP_FILE=/appl/fpmerge/sched_open$$.tmp
+
+>$HTML_RESP_FILE
+chmod 640 $HTML_RESP_FILE
+export HTML_RESP_FILE
+
+/appl/fp/dreport scheduling -fp open -sr 1 -u -r "$$" -rw "$SCHED" -rx "$DESC" >> /dev/null
+
+# $SCHED is type, $DESC is description
+
+echo Content-type: text/html
+echo
+
+cat $HTML_RESP_FILE
+rm -f $HTML_RESP_FILE
+
