@@ -13,7 +13,7 @@
 
   <head runat="server">
 		<!-- load necessary functions and style sheets -->
-		<script language="JavaScript" type="text/javascript" src="/script/sched.js"></script> <!-- data validation and fetching -->
+		<script language="JavaScript" type="text/javascript" src="/scheduling/javascript/sched.js"></script> <!-- data validation and fetching -->
 
     <link rel="stylesheet" type="text/css" href="/scheduling/include/headermenustyle.html">
     <link rel="stylesheet" type="text/css" href="/scheduling/include/generalstyle.html">
