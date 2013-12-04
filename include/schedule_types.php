@@ -16,7 +16,8 @@ $schedules= array("SRC"=>"Source",
 									"TSA"=>"Test_Aerospace",
 									"SOL"=>"Select_Solder",
 									"WSO"=>"Wave_Solder",
-									"COT"=>"Coating");
+									"COT"=>"Coating",
+									"CAC"=>"Cut_and_Clinch");
 
 function getDesc($type)
 {
