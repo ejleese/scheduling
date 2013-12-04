@@ -1,0 +1,30 @@
+  <style type="text/css">
+  #popupbox{
+  margin: 0;
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 50px;
+  padding-top: 10px;
+  width: 20%;
+  height: 200px;
+  position: absolute;
+  background: #FBFBF0;
+  border: solid #000000 2px;
+  z-index: 9;
+  font-family: arial;
+  visibility: hidden;
+  }
+  </style>
+
+<div id="popupbox">
+<center>New Priority:</center>
+<center><input id="newpri" size="4" /></center>
+<center>Clock #:</center>
+<center><input id="loginClk" size="4" /></center>
+<center>Password:</center>
+<center><input id="loginPass" type="password" size="4" /></center>
+<center><input type='button' value='Submit' onclick="ajaxLoginPost()"></center>
+<br />
+<center><a href="javascript:clkLogin('hide');">Cancel</a></center>
+</div>
+
