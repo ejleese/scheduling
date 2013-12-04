@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# sched_complete
+# purpose: builds schedule's completed list
+# usage: called from menu.html
+#
+
+# GET PARAMETER FROM QUERY STRING
+SCHED=`echo "$QUERY_STRING" | sed -n 's/^.*sched=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"`
+DESC=`echo "$QUERY_STRING" | sed -n 's/^.*desc=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"`
+VER=`echo "$QUERY_STRING" | sed -n 's/^.*version=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"`
+
+#echo "$$ $SCHED $DESC" | mutt -s "In sched_complete" ericl@borisch.com
+
+. ./fpsetenv.bat
+
+HTML_RESP_FILE=/appl/fpmerge/sched_complete$$.tmp
+
+>$HTML_RESP_FILE
+chmod 640 $HTML_RESP_FILE
+export HTML_RESP_FILE
+
+/appl/fp/dreport scheduling -fp complete -sr 1 -u -r "$$" -rw "$SCHED" -rx "$DESC" -ry "$VER">> /dev/null
+
+# $SCHED is type, $DESC is description, $VER is version(all/short)
+
+echo Content-type: text/html
+echo
+
+cat $HTML_RESP_FILE
+rm -f $HTML_RESP_FILE
+

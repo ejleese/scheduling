@@ -1,0 +1,35 @@
+#!/bin/sh
+##############################################################################
+#
+#   Schedule Login Processor    (copied from DAVEW's IL-login
+#
+#   Calls filePro processing to process the HTML POST data for login (AJAX style)
+#
+#   NOTE: stdout goes to the webserver as an HTML response to the browser user
+#
+
+#echo "in sched_login" | mutt -s "cgi-bin/sched_login" ericl@borisch.com
+
+# fpWeb environment setup 
+. /usr/local/appl/www/cgi-bin/fpsetenv.bat
+
+# run filePro processing to handle the POST data
+
+#echo $$ $1 $2 $3 $4 | mutt -s "sched_login vars" ericl@borisch.com
+
+/appl/fp/dreport scheduling -fp login -sr 1 -u -r "$$" -rw "$1" -rx "$2" -ry "$3" -rz "$4" >> /dev/null
+
+#   '-sr 1' runs processing only on first record ("unused" control record)
+#   '-u' ensures we're not locked out of record 1 and we don't lock anyone else
+#   '-r "$$"' sends process id to filePro for building temp file names
+#   '-rw=recnum, -rx= new priority, -ry= user, -rz= pwd
+
+#echo Content-type: text/html
+
+# send HTML output from filePro to stdout for web server
+cat /appl/fpmerge/schedreprior_$$.pout
+
+# clean up temp files
+#rm -f /appl/fpmerge/schedreprior_$$.pout
+
+

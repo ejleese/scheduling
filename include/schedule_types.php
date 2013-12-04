@@ -1,7 +1,11 @@
 <!-- schedule_types.php -->
 <!-- purpose: translate 3 letter schedule type codes into long desc -->
 <!-- usage: included at the top of prod_login.php to deal with passed param -->
+<<<<<<< HEAD
 <!-- Note: DO NOT DUPLICATE ANY TYPE CODES IN USE IN GR! (to make easier to merge later if needed) -->
+=======
+<!-- Note: DO NOT DUPLICATE ANY TYPE CODES IN USE IN NOGALES! (to make easier to merge later if needed) -->
+>>>>>>> c87e5577d72f48d2d0c9d250c27bfdeaab3f1f1f
 
 <?php
 
@@ -11,7 +15,17 @@
 # Note: Use underscores rather than spaces (passed as parameter)
 # The order of pairs determines order they show up on scheduling.php list
 
+<<<<<<< HEAD
 $schedules= array("SRN"=>"Source_Nogales");
+=======
+$schedules= array("SRC"=>"Source",
+									"TSD"=>"Test_Defense",
+									"TSA"=>"Test_Aerospace",
+									"SOL"=>"Select_Solder",
+									"WSO"=>"Wave_Solder",
+									"COT"=>"Coating",
+									"CAC"=>"Cut_and_Clinch");
+>>>>>>> c87e5577d72f48d2d0c9d250c27bfdeaab3f1f1f
 
 function getDesc($type)
 {
