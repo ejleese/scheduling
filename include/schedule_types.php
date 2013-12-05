@@ -1,7 +1,7 @@
 <!-- schedule_types.php -->
 <!-- purpose: translate 3 letter schedule type codes into long desc -->
 <!-- usage: included at the top of prod_login.php to deal with passed param -->
-<!-- Note: DO NOT DUPLICATE ANY TYPE CODES IN USE IN NOGALES! (to make easier to merge later if needed) -->
+<!-- Note: DO NOT DUPLICATE ANY TYPE CODES BETWEEN THE TWO SCHEDULES! (to make easier to merge later if needed) -->
 
 <?php
 
@@ -11,8 +11,9 @@
 # Note: Use underscores rather than spaces (passed as parameter)
 # The order of pairs determines order they show up on scheduling.php list
 
-$loc = getenv('HTTP_HOST'); # get server name, ie intranet.borisch.com or filepro.nogales.borisch.com
+$loc = getenv('SERVER_NAME'); # get server name, ie intranet.borisch.com or filepro.nogales.borisch.com
 
+# DO NOT duplicate abbreviations found in _NOG schedule below!
 $schedules_GR= array(
                   "SRC"=>"Source",
                   "TSD"=>"Test_Defense",
@@ -22,6 +23,7 @@ $schedules_GR= array(
                   "COT"=>"Coating",
                   "CAC"=>"Cut_and_Clinch");
 
+# DO NOT duplicate abbreviations found in _GR schedule above!
 $schedules_NOG= array(
                   "SRN"=>"Source_Nogales");
 
