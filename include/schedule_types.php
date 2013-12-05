@@ -13,6 +13,8 @@
 
 $loc = getenv('SERVER_NAME'); # get server name, ie intranet.borisch.com or filepro.nogales.borisch.com
 
+#phpinfo();
+
 # DO NOT duplicate abbreviations found in _NOG schedule below!
 $schedules_GR= array(
                   "SRC"=>"Source",
