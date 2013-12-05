@@ -3,6 +3,7 @@
 <!-- usage: included at the top of prod_login.php to deal with passed param -->
 <!-- Note: DO NOT DUPLICATE ANY TYPE CODES BETWEEN THE TWO SCHEDULES! (to make easier to merge later if needed) -->
 
+<?php include '/appl/fp/lib/phpsetvar.php'; ?>
 <?php
 
 # key-value pair format: "XXX"=>"Description_Text"
@@ -10,10 +11,6 @@
 # where "Description_Text" is the description of that department.
 # Note: Use underscores rather than spaces (passed as parameter)
 # The order of pairs determines order they show up on scheduling.php list
-
-$loc = getenv('SERVER_NAME'); # get server name, ie intranet.borisch.com or filepro.nogales.borisch.com
-
-#phpinfo();
 
 # DO NOT duplicate abbreviations found in _NOG schedule below!
 $schedules_GR= array(
@@ -29,7 +26,7 @@ $schedules_GR= array(
 $schedules_NOG= array(
                   "SRN"=>"Source_Nogales");
 
-if ($loc == "filepro.nogales.borisch.local") 
+if ($PFLOC == "NOG") 
 	$schedules = $schedules_NOG;
 else
 	$schedules = $schedules_GR; 
