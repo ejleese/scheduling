@@ -14,7 +14,7 @@
 		<div align="center">
 			<h1>Select a Schedule below to view / edit</h1>
 
-			<?php $genTable = genList(); ?>
+			<?php $genTable = genList($loc); ?>
 
 		</div>
 	</body>

@@ -11,13 +11,24 @@
 # Note: Use underscores rather than spaces (passed as parameter)
 # The order of pairs determines order they show up on scheduling.php list
 
-$schedules= array("SRC"=>"Source",
-									"TSD"=>"Test_Defense",
-									"TSA"=>"Test_Aerospace",
-									"SOL"=>"Select_Solder",
-									"WSO"=>"Wave_Solder",
-									"COT"=>"Coating",
-									"CAC"=>"Cut_and_Clinch");
+$loc = getenv('HTTP_HOST'); # get server name, ie intranet.borisch.com or filepro.nogales.borisch.com
+
+$schedules_GR= array(
+                  "SRC"=>"Source",
+                  "TSD"=>"Test_Defense",
+                  "TSA"=>"Test_Aerospace",
+                  "SOL"=>"Select_Solder",
+                  "WSO"=>"Wave_Solder",
+                  "COT"=>"Coating",
+                  "CAC"=>"Cut_and_Clinch");
+
+$schedules_NOG= array(
+                  "SRN"=>"Source_Nogales");
+
+if ($loc == "filepro.nogales.borisch.local") 
+	$schedules = $schedules_NOG;
+else
+	$schedules = $schedules_GR; 
 
 function getDesc($type)
 {
