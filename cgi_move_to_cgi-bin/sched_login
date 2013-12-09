@@ -30,6 +30,6 @@
 cat /appl/fpmerge/schedreprior_$$.pout
 
 # clean up temp files
-#rm -f /appl/fpmerge/schedreprior_$$.pout
+rm -f /appl/fpmerge/schedreprior_$$.pout
 
 
