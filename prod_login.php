@@ -45,7 +45,7 @@
 			</div><br><br><br>
       Assembly: <input type="text" id="assynum" disabled="true">
       Qty: <input type="text" id="qty" disabled="true" onfocus="this.style.border='5px groove red'" onblur="this.style.border='1px solid gray'">
-      Hot Barcode? <input type="text" id="hot" disabled="true">
+      Hot? <input type="text" id="hot" disabled="true">
       <br><br>
       
 			<input type="button" id="btn_trav_add" value="Add to Tracking List" onclick="submitTrav('<?php echo $type ?>', '<?php echo $type_long ?>')">

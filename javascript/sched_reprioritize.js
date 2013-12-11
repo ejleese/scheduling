@@ -35,17 +35,26 @@ var gPostLoginRedirect;
 var passRecNum; // make visible so i can pass from clkLogin to AjaxLoginPost
 var theType;
 var theDesc;
+var hotval_orig;
+var hotval_new;
 
-function clkLogin(showhide, recnum, type, desc, postLoginRedirect) 
+function clkLogin(showhide, recnum, type, desc, hotval, postLoginRedirect) 
 {
 	passRecNum = recnum;
   theType = type;
   theDesc = desc;
+  if (hotval == "Y") hotflag=true;
+	else hotflag=false;
+	hotval_orig = hotval;
 
 	if(showhide == "show")
 	{
 		document.getElementById('newpri').value="";
 		document.getElementById('loginPass').value="";
+		if (hotflag==true) 
+			document.getElementById('hottog').checked=true;
+		else
+			document.getElementById('hottog').checked=false;
 		document.getElementById('popupbox').style.visibility="visible";
 		document.getElementById('newpri').focus()
 		gPostLoginRedirect=postLoginRedirect;
@@ -60,11 +69,19 @@ function clkLogin(showhide, recnum, type, desc, postLoginRedirect)
 }
 
 function ajaxLoginPost() {
+
+	var hotval_changed=false;
+
+	hotval_new=document.getElementById("hottog");
+
+  if (hotval_new != hotval_orig) hotval_changed=true;
+
   var newpri = document.getElementById("newpri");
 	var loginClk = document.getElementById("loginClk");
 	var loginPass = document.getElementById("loginPass");
   var recnum = passRecNum;
-  if( newpri.value == "") { alert("Must provide new priority"); return;}
+
+  if( newpri.value == "" && hotval_changed != true) { alert("Must provide new priority"); return;}
 	if( loginClk.value == "" ) { alert("Must provide clock #"); return; }
 	if( loginPass.value == "" ) { alert("Must provide password"); return; }
 	var http = getHTTPObject(); // create the HTTP Object
@@ -91,8 +108,9 @@ function ajaxLoginPost() {
 	var clkvalue=encodeURIComponent(loginClk.value);
 	var passvalue=encodeURIComponent(loginPass.value);
   var privalue=encodeURIComponent(newpri.value);
+  var hotvalue=encodeURIComponent(hotval_new);
   var nocachevar = new Date().getTime();
-	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&nocache="+nocachevar;
+	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotvalue&"&nocache="+nocachevar;
 //	http.open("POST", "/cgi-bin/sched_login", false); // open request
 	http.open("GET", "/scheduling/getLogin.php?"+parameters, false); // open request
 //	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")

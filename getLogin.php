@@ -9,7 +9,8 @@ $recnum = $_GET['recnum'];
 $newpri = $_GET['newpri'];
 $user = $_GET['loginClk'];
 $pwd = $_GET['loginPass'];
+$hot = $_GET['hotPass'];
 
-passthru("/appl/www/cgi-bin/sched_login '$recnum' '$newpri' '$user' '$pwd'");
+passthru("/appl/www/cgi-bin/sched_login '$recnum' '$newpri' '$user' '$pwd' '$hot'");
 //passthru("/appl/www/cgi-bin/sched_login");
 ?>
