@@ -44,7 +44,8 @@ function ajaxLoginPost() {
 
 	var hotval_changed=false;
 
-	hotval_new=document.getElementById("hottog");
+	if (document.getElementById("hottog").checked==true) hotval_new="Y";
+	else hotval_new = "N";
 
   if (hotval_new != hotval_orig) hotval_changed=true;
 
@@ -53,7 +54,7 @@ function ajaxLoginPost() {
 	var loginPass = document.getElementById("loginPass");
   var recnum = passRecNum;
 
-  if( newpri.value == "" && hotval_changed != true) { alert("Must provide new priority"); return;}
+  if( newpri.value == "" && hotval_changed != true) { alert("Must provide new priority or hot value"); return;}
 	if( loginClk.value == "" ) { alert("Must provide clock #"); return; }
 	if( loginPass.value == "" ) { alert("Must provide password"); return; }
 	var http = getHTTPObject(); // create the HTTP Object
@@ -79,7 +80,7 @@ function ajaxLoginPost() {
 	var passvalue=encodeURIComponent(loginPass.value);
   var privalue=encodeURIComponent(newpri.value);
   var hotvalue;
-	if (hotval_new.value == "on") hotvalue="Y";
+	if (document.getElementById('hottog').checked==true) hotvalue="Y";
 	else hotvalue="N";
   var nocachevar = new Date().getTime();
 	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotvalue+"&nocache="+nocachevar;
