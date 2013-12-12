@@ -3,34 +3,6 @@
 // usage:   called via html generated in filepro scheduling/open
 // author:  ejl 9/23/2013
 
-function reprioritize(recnum,newpri)
-{
-
-  var http = getHTTPObject();  // create the http object
-  http.onreadystatechange = function()
-  {
-    if (http.readyState == 4)
-    {
-      results = http.responseText.split(","); // split delimited response in
-      if (results[0] != "success")
-      {
-        alert("Error: Unable to reprioritize traveler/RPN " + travnum+"\n\n"+results[0]);
-      }
-			else
-			{
-				alert("Traveler/RPN "+travnum+" successfully reprioritized.");
-			}
-    }
-  }
-//  var nocachevar = Date.now(); // not supported in IE8
-	var nocachevar = new Date().getTime();
-  http.open("GET", "/scheduling/repriorTrav.php?rec="+recnum+"&newpri="+escape(newpri)+"&nocache="+nocachevar, false);
-  http.send(null);
-
-	return true;
-
-}
-
 var gPostLoginRedirect;
 var passRecNum; // make visible so i can pass from clkLogin to AjaxLoginPost
 var theType;
@@ -96,8 +68,6 @@ function ajaxLoginPost() {
 				} else {
 					clkLogin("hide");
 					window.location.reload(true);					
-//					document.getElementById('loggedIn').style.display="block";
-//					document.getElementById('loginLink').style.display="none";
 				}
 			}
 			else {
@@ -108,13 +78,12 @@ function ajaxLoginPost() {
 	var clkvalue=encodeURIComponent(loginClk.value);
 	var passvalue=encodeURIComponent(loginPass.value);
   var privalue=encodeURIComponent(newpri.value);
-  var hotvalue=encodeURIComponent(hotval_new);
+  var hotvalue;
+	if (hotval_new.value == "on") hotvalue="Y";
+	else hotvalue="N";
   var nocachevar = new Date().getTime();
-	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotvalue&"&nocache="+nocachevar;
-//	http.open("POST", "/cgi-bin/sched_login", false); // open request
+	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotvalue+"&nocache="+nocachevar;
 	http.open("GET", "/scheduling/getLogin.php?"+parameters, false); // open request
-//	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-//	http.send(parameters); // send request
 	http.send(null); // send request
 
 }
