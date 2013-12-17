@@ -6,22 +6,39 @@
 <br>
 -->
 
+<script>
+	if ($.cookie('lang_cookie')=="SP")
+	{
+		var text1="Introduzca"; // Introduzca el producto
+		var text2="Completado";
+		var text3="Abierto";
+	}
+	else
+	{
+		text1="Product Login";
+		text2="Completed";
+		text3="Open";
+	}
+</script>
+
 <div align=center>
+
 
 <table class="headertable" width=70%>
 	<tr>
   <td>
-		<a href="/scheduling/prod_login.php?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>">Product Login</a>
+		<a href="/scheduling/prod_login.php?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>"><script>document.write(text1)</script></a>
 	</td>
   <td>
-		<a href="/cgi-bin/sched_complete?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>">Completed</a>
+		<a href="/cgi-bin/sched_complete?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>"><script>document.write(text2)</script></a>
 	</td>
   <td>
-		<a href="/cgi-bin/sched_open?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>">Open</a>
+		<a href="/cgi-bin/sched_open?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>"><script>document.write(text3)</script></a>
 	</td>
 	</tr>
 </table>
 
+</script>
 <hr>
 
 </div>

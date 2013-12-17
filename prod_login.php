@@ -44,67 +44,49 @@
 
 <script>
 
-// form done within javascript because I'm not sure how else to get at the javascript variables for the text. can't use PHP here
-
-  document.write("<form id=\"prod_login\" runat=\"server\">");
-
-	var lang=$.cookie('lang_cookie');
-  if (lang=="SP")
-    var text="Introduzca el traveler / RPN:  ";
-   else text="Scan or Enter traveler / RPN:  ";
-
-  document.write("<div align=\"center\" style='font-size:25px'>"+text);
-	document.write("  <input type=\"text\" id=\"travnum\" onfocus=\"this.style.border='5px groove red'\" onblur=\"this.style.border='1px solid gray'\" onkeypress=\"return sanitize(this);\">");
-
-  if (lang=="SP")
-    text="Obtenga informaci&#243n del traveler/RPN";
-   else text="Get Trav / RPN info";
-
-	document.write("  <input type=\"button\" id=\"btn_fetch_trav\" value=\""+text+"\" onclick=\"return validateFetchTrav()\">");
-	document.write("</div><br><br><br>");
-
-  if (lang=="SP")
-		text="Ensamble:  ";
-	else text="Assembly:  ";
-
-  document.write(text+"<input type=\"text\" id=\"assynum\" disabled=\"true\">  ");
-
-	if (lang=="SP")
-		text="Cantidad:  ";
-	else text="Qty:  ";
-
-  document.write(text+"<input type=\"text\" id=\"qty\" disabled=\"true\" onfocus=\"this.style.border='5px groove red'\" onblur=\"this.style.border='1px solid gray'\">  ");
-
-	if (lang=="SP")
-		text="Caliente?  ";
-	else text="Hot?  ";
-
-  document.write(text+"<input type=\"text\" id=\"hot\" disabled=\"true\">  ");
-  document.write("<br><br>");
-      
-	if (lang=="SP")
-		text="Agregar a la lista";
-	else text="Add to Tracking List";
-
-	document.write("<input type=\"button\" id=\"btn_trav_add\" value=\""+text+"\" onclick=\"submitTrav('<?php echo $type ?>', '<?php echo $type_long ?>')\">");
-
-	if (lang=="SP")
-		text="Limpiar la forma";
-	else text="Reset Form";
-
-	document.write("<input type=\"button\" id=\"btn_reset\"    value=\""+text+"\" onclick=\"resetForm()\">");
-	document.write("<br><br>");
-
-	if (lang=="SP")
-		text="Nota: aseg&uacuterese de poner el traveler correcto / RPN antes de presionar el bot&oacuten \"Agregar a la lista\"";
-	else text="Note: Make sure you have the correct traveler / RPN before hitting the \"Add to Tracking List\" button";
-
-	document.write(text);
-
-  document.write("</form>");
-	
+var lang=$.cookie('lang_cookie');
+if (lang=="SP")
+{
+	var text1="Introduzca el traveler / RPN:  ";
+	var text2="Obtenga informaci&#243n del traveler/RPN";
+	var text3="Ensamble:  ";
+	var text4="Cantidad:  ";
+	var text5="Caliente?  ";
+	var text6="Agregar a la lista";
+	var text7="Limpiar la forma";
+	var text8="Nota: aseg&uacuterese de poner el traveler correcto / RPN antes de presionar el bot&oacuten \"Agregar a la lista\"";
+}
+else
+{
+	text1="Scan or Enter traveler / RPN:  ";
+	text2="Get Trav / RPN info";
+	text3="Assembly:  ";
+	text4="Qty:  ";
+	text5="Hot?  ";
+	text6="Add to Tracking List";
+	text7="Reset Form";
+	text8="Note: Make sure you have the correct traveler / RPN before hitting the \"Add to Tracking List\" button";
+}
 </script>
 
+  <form id="prod_login" runat="server">
+
+  <div align="center" style='font-size:25px'><script>document.write(text1)</script>
+	<input type="text" id="travnum" onfocus="this.style.border='5px groove red'" onblur="this.style.border='1px solid gray'" onkeypress="return sanitize(this);">
+
+	<script>document.write("<input type='button' id='btn_fetch_trav' value='"+text2+"' onclick='return validateFetchTrav()'>")</script>
+	</div><br><br><br>
+  <script>document.write(text3)</script><input type="text" id="assynum" disabled="true">
+  <script>document.write(text4)</script><input type="text" id="qty" disabled="true" onfocus="this.style.border='5px groove red'" onblur="this.style.border='1px solid gray'">
+  <script>document.write(text5)</script><input type="text" id="hot" disabled="true">
+  <br><br>
+	<script>document.write("<input type='button' id='btn_trav_add' value='"+text6+"' onclick='submitTrav('<?php echo $type ?>', '<?php echo $type_long ?>')'>")</script>
+	<script>document.write("<input type='button' id='btn_reset'    value='"+text7+"' onclick='resetForm()'>")</script>
+	<br><br>
+	<script>document.write(text8)</script>
+
+  </form>
+	
     </div>
   </body>
 </html>
