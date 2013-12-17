@@ -3,6 +3,8 @@
 //					to fill in the rest of the form
 // author: Eric Leese 9/10/13 
 
+var lang=$.cookie('lang_cookie');
+
 function getHTTPObject()
 {
 	var xmlhttp;
@@ -31,7 +33,10 @@ function fetchTravInfo(travnum)
 			results = http.responseText.split(","); // split delimited response into array
 			if (results[0] == "?") 
 			{
-				alert("Error: No such Traveler / RPN: " + travnum); 
+				if (lang=="SP")
+					alert("Error: no existe el Traveler / RPN: " + travnum);
+				else
+					alert("Error: No such Traveler / RPN: " + travnum); 
 				return_value = false;
 			}
 			else
@@ -61,7 +66,10 @@ function validateFetchTrav()
 
   if (varTravnum == "" || varTravnum == null)
 	{
-		alert("Must enter a traveler/RPN number first.");
+		if (lang=="SP")
+			alert("Debe introducer el traveler / RPN primero");
+		else
+			alert("Must enter a traveler/RPN number first.");
 		exit_Fail();
 		return;
 	}
@@ -101,7 +109,10 @@ function validateQty()
 	
 	if(qty <= 0 || isNaN(qty) == true)
 	{
-		alert("Must enter quantity greater than zero.");
+		if (lang=="SP")
+			alert("Debe poner una cantidad mayor a cero.");
+		else
+			alert("Must enter quantity greater than zero.");
 		document.getElementById('qty').focus();
 		
 		return false; 
@@ -124,7 +135,10 @@ function submitTrav(type,typelong)
 
 	if (travnum == "" || travnum == null || isNaN(qty) || assynum == "" || assynum == null)
 	{
-		alert("Error: Traveler/Assy/Qty fields must be filled in.");
+		if (lang=="SP")
+			alert("Error: los campos de Traveler/Ensamble/Cantidad deben ser llenados");
+		else
+			alert("Error: Traveler/Assy/Qty fields must be filled in.");
 		return false;
 	}
 	document.getElementById('travnum').disabled=true;
@@ -140,12 +154,18 @@ function submitTrav(type,typelong)
 			var results = http2.responseText.split(","); // split delimited response into array
 			if (results[0] != "success") 
 			{
-				alert("Error: Unable to add " + travnum + " to "+typelong+" schedule!\n\n" + results[0]); 
+				if (lang=="SP")
+					alert("Error: no se puede agregar " + travnum + " al " + typelong + " schedule!\n\n" + results[0]);
+				else
+					alert("Error: Unable to add " + travnum + " to "+typelong+" schedule!\n\n" + results[0]); 
 				return_value = false;
 			}
 			else
 			{
-				alert(travnum + " added to " +typelong+" schedule.");
+				if (lang=="SP")
+					alert(travnum + " agregado al " + typelong + " schedule.");
+				else
+					alert(travnum + " added to " +typelong+" schedule.");
 				resetForm();
 				return_value = true;
 			}
@@ -204,7 +224,13 @@ function sanitize(inVal)
 {
 	if (/\W/.test(inVal.value))
 	{ 
-		alert("alphanumeric input only");
+		if (lang=="SP")
+		{
+		var txt="solo caracteres alfanum\u00e9ricos";
+		alert(txt);
+		}
+		else
+			alert("alphanumeric input only");
 		return false;
 	} 
 	return true;

@@ -10,6 +10,8 @@ var theDesc;
 var hotval_orig;
 var hotval_new;
 
+var lang=$.cookie('lang_cookie'); 
+
 function clkLogin(showhide, recnum, type, desc, hotval, postLoginRedirect) 
 {
 	passRecNum = recnum;
@@ -54,9 +56,22 @@ function ajaxLoginPost() {
 	var loginPass = document.getElementById("loginPass");
   var recnum = passRecNum;
 
-  if( newpri.value == "" && hotval_changed != true) { alert("Must provide new priority or hot value"); return;}
-	if( loginClk.value == "" ) { alert("Must provide clock #"); return; }
-	if( loginPass.value == "" ) { alert("Must provide password"); return; }
+	if (lang=="SP")
+	{
+		var text1="Debe poner la nueva prioridad o material caliente";
+		var text2="Debe poner su # de empleado";
+		var text3="Debe poner su Contrase\u00f1a";
+	}
+	else
+	{
+		text1="Must provide new priority or hot value";
+		text2="Must provide clock #";
+		text3="Must provide password";
+	}
+
+  if( newpri.value == "" && hotval_changed != true) { alert(text1); return;}
+	if( loginClk.value == "" ) { alert(text2); return; }
+	if( loginPass.value == "" ) { alert(text3); return; }
 	var http = getHTTPObject(); // create the HTTP Object
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
@@ -100,4 +115,3 @@ function getHTTPObject()
   }
   return xmlhttp;
 }
-

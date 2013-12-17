@@ -4,6 +4,8 @@
 // usage:   called via html generated in filepro scheduling/open
 // author:  ejl 9/23/2013
 
+var lang=$.cookie('lang_cookie');
+
 function complete(recnum,travnum,type)
 {
 
@@ -15,11 +17,17 @@ function complete(recnum,travnum,type)
       results = http.responseText.split(","); // split delimited response in
       if (results[0] != "success")
       {
-        alert("Error: Unable to Complete traveler/RPN " + travnum+"\n\n"+results[0]);
+				if (lang=="SP")
+					alert("Error: No se puede completar el traveler/RPN " + travnum+"\n\n"+results[0]); 
+				else
+        	alert("Error: Unable to Complete traveler/RPN " + travnum+"\n\n"+results[0]);
       }
 			else
 			{
-				alert("Traveler/RPN "+travnum+" successfully completed.");
+				if (lang=="SP")
+					alert("Traveler/RPN "+travnum+" completado exitosamente.");
+				else
+					alert("Traveler/RPN "+travnum+" successfully completed.");
 			}
     }
   }
