@@ -55,7 +55,6 @@ function ajaxLoginPost() {
 	var loginClk = document.getElementById("loginClk");
 	var loginPass = document.getElementById("loginPass");
   var recnum = passRecNum;
-
 	if (lang=="SP")
 	{
 		var text1="Debe poner la nueva prioridad o material caliente";

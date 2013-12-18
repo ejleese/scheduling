@@ -3,8 +3,6 @@
 //					to fill in the rest of the form
 // author: Eric Leese 9/10/13 
 
-var lang=$.cookie('lang_cookie');
-
 function getHTTPObject()
 {
 	var xmlhttp;
@@ -21,7 +19,6 @@ function getHTTPObject()
 // input: traveler number entered by user
 function fetchTravInfo(travnum)
 {
-	
   //fetch data
 	var http = getHTTPObject();  // create the http object
   var return_value = true;

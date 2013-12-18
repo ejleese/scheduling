@@ -5,8 +5,8 @@
 <?php include 'include/schedule_types.php'; ?>
 
 	<head>
-		<link rel="stylesheet" type="text/css" href="/scheduling/include/generalstyle.html">
-		<link rel="stylesheet" type="text/css" href="/scheduling/include/headermenustyle.html">
+		<link rel="stylesheet" type="text/css" href="/scheduling/include/generalstyle.css">
+		<link rel="stylesheet" type="text/css" href="/scheduling/include/headermenustyle.css">
 	</head>
 	<title>Scheduling</title>
 	<body>

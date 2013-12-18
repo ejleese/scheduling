@@ -4,63 +4,8 @@
 <script src="/scheduling/javascript/jquery.cookie.js"></script>
 
 <?php include_once '/appl/fp/lib/phpsetvar.php';
-
-// initial default language selection based on location
-if (!isset($_GET['lang']))
-{
-  if ($PFLOC == "NOG")
-		$lang="SP";
-  else
-		$lang="EN";
-}
-else
-	$lang = $_GET['lang'];
-
-if ($lang=="SP")
-	$langnext="EN";
-else
-	$langnext="SP";
-
-// language has been manually selected
-	if ($lang == "SP") 
-		$langtext = "English";
-	else 
-		$langtext = "Espa&#241ol"; //yes that is an escape char in there
-
-
 $mypage=getenv("REQUEST_URI");
-$newurl;
-
-$mypage=unparse_url(parse_url($mypage));
-function unparse_url($parsed_url)
-{
-	$path=$parsed_url['path'];
-	$query=$parsed_url['query'];
-
-	$queryParts=explode('&',$query);
-	$params=array();
-  global $langnext;
-	$newurl;
-	foreach($queryParts as $param)
-	{
-		$item=explode('=',$param);
-		$params[$item[0]]=$item[1];
-		if ($item[0]=="lang") $params[$item[0]]=$langnext;
-	}
-
-  $paramlist=http_build_query($params);
-  $tmp=array($path,"?",$paramlist);
-  $newurl=join("",$tmp);
-  return $newurl;
-}
-
-/*
-echo "<i><a href=\"$mypage\" style=\"float:left; font-family:Verdana; font-size:15px;\">$langtext</a>";
-*/
-
 ?>
-
-<!-- the below may replace most/all of the above php -->
 
 <script>
 
@@ -100,22 +45,16 @@ else // english presumed
 	nextlanglong="[a Espa&ntildeol]";
 }
 
-$.cookie('lang_cookie',lang); // make sure cookie is set either way
+$.cookie('lang_cookie',lang,{path:'/'}); // make sure cookie is set either way, across whole path since app spans some folders (cgi, scheduling)
 
 var url="<?php echo $mypage; ?>"; //from above PHP code
-document.write("<i><a href='"+url+"' style='float:left; font-family:Verdana; font-size:12px;' onclick='toggleLang()';>"+ nextlanglong +"</a></i>");
-
-// cookie is now set either way...act accordingly
-//show toggle link
-//when pressed, toggle cookie value
-	//then refresh page
+document.write("<i><a href='"+url+"' style='float:left; font-family:Verdana; font-size:12px;' onclick='toggleLang()'>"+ nextlanglong +"</a></i>");
 
 function toggleLang()
 {
-	$.cookie('lang_cookie',nextlang); // set cookie to toggled language
+//  $.removeCookie('lang_cookie'); // because IE isn't resetting value properly
+	$.cookie('lang_cookie',nextlang,{path:'/'}); // set cookie to toggled language
 }
 
-
 </script>
-
 </html>

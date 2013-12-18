@@ -2,7 +2,7 @@
 <!-- purpose: used to add a traveler/rpn to the appropriate schedule -->
 <!-- author: Eric Leese 9/10/13 -->
 
-<html>
+<!DOCTYPE html>
 
 <!-- get schedule type from passed parameter ("?sched=xxx") -->
 <?php $type=$_GET['sched']; ?>
@@ -11,10 +11,13 @@
 <!-- TODO: redirect if $type is UNKNOWN -->
 
   <head runat="server">
+  	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" /> 
+
 		<!-- load necessary functions and style sheets -->
-		<script language="JavaScript" type="text/javascript" src="/scheduling/javascript/sched.js"></script> <!-- data validation and fetching -->
-    <link rel="stylesheet" type="text/css" href="/scheduling/include/headermenustyle.html">
-    <link rel="stylesheet" type="text/css" href="/scheduling/include/generalstyle.html">
+		<script language="JavaScript" type="text/javascript" src="/scheduling/javascript/sched.js"></script>
+    <link rel="stylesheet" type="text/css" href="/scheduling/include/headermenustyle.css">
+    <link rel="stylesheet" type="text/css" href="/scheduling/include/generalstyle.css">
+
  	</head>
   <title>
 		<?php echo "Product Login ($type_long)"; ?>
@@ -80,7 +83,7 @@ else
   <script>document.write(text4)</script><input type="text" id="qty" disabled="true" onfocus="this.style.border='5px groove red'" onblur="this.style.border='1px solid gray'">
   <script>document.write(text5)</script><input type="text" id="hot" disabled="true">
   <br><br>
-	<script>document.write("<input type='button' id='btn_trav_add' value='"+text6+"' onclick='submitTrav('<?php echo $type ?>', '<?php echo $type_long ?>')'>")</script>
+	<script>document.write("<input type='button' id=\"btn_trav_add\" value='"+text6+"' onclick=\"submitTrav('<?php echo $type ?>', '<?php echo $type_long ?>')\">")</script>
 	<script>document.write("<input type='button' id='btn_reset'    value='"+text7+"' onclick='resetForm()'>")</script>
 	<br><br>
 	<script>document.write(text8)</script>
