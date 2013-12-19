@@ -5,11 +5,17 @@
 # usage: linked from include/menu.html
 #
 
-. ./fpsetenv.bat
+#echo "start In sched_open: $$ $1 $2 $3" | mutt -s "sched_open" ericl@borisch.com
+
+#. ./fpsetenv.bat
 
 # GET PARAMETER FROM QUERY STRING
-SCHED=`echo "$QUERY_STRING" | sed -n 's/^.*sched=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"`
-DESC=`echo "$QUERY_STRING" | sed -n 's/^.*desc=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"`
+
+SCHED=$1
+DESC=$2
+LANG=$3
+
+export LANG
 
 HTML_RESP_FILE=/appl/fpmerge/sched_open$$.tmp
 
@@ -21,8 +27,8 @@ export HTML_RESP_FILE
 
 # $SCHED is type, $DESC is description
 
-echo Content-type: text/html
-echo
+#echo Content-type: text/html
+#echo
 
 cat $HTML_RESP_FILE
 rm -f $HTML_RESP_FILE

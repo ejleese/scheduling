@@ -8,6 +8,9 @@
 
 . /usr/local/appl/www/cgi-bin/fpsetenv.bat
 
+LANG=$2
+export LANG
+
 /appl/fp/dreport scheduling -fp getTrav2 -u -sr 1 -r "$$" -rx "$1" >> /dev/null
 
 cat /appl/fpmerge/sched_$$.pout

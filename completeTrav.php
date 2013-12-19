@@ -8,6 +8,7 @@
 $rec = $_GET['rec'];
 $trav = $_GET['trav'];
 $type = $_GET['type'];
+$lang = $_GET['lang'];
 
-passthru("/appl/www/cgi-bin/sched_completeTrav.sh '$rec' '$trav' '$type'");
+passthru("/appl/www/cgi-bin/sched_completeTrav.sh '$rec' '$trav' '$type' '$lang'");
 ?>

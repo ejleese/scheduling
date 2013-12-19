@@ -17,7 +17,9 @@
 
 #echo $$ $1 $2 $3 $4 $5 | mutt -s "sched_login vars" ericl@borisch.com
 
-#/appl/fp/dreport scheduling -fp login -sr 1 -u -r "$$" -rw "$1" -rx "$2" -ry "$3" -rz "$4" >> /dev/null
+LANG=$6
+export LANG
+
 /appl/fp/dreport scheduling -fp login -sr 1 -u -r "+pid=$$+rec=$1+pri=$2+clk=$3+pwd=$4+hot=$5" >> /dev/null
 
 #   '-sr 1' runs processing only on first record ("unused" control record)

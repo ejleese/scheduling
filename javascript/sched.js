@@ -171,7 +171,9 @@ function submitTrav(type,typelong)
 //  var nocachevar = Date.now(); // not supported in IE 8
 	var nocachevar = new Date().getTime();
 
-	http2.open("GET", "/scheduling/addTrav.php?trav="+escape(travnum)+"&qty="+escape(qty)+"&nocache="+nocachevar+"&sched="+type, false);
+	var lang = $.cookie('lang_cookie');
+
+	http2.open("GET", "/scheduling/addTrav.php?trav="+escape(travnum)+"&qty="+escape(qty)+"&nocache="+nocachevar+"&sched="+type+"&lang="+lang, false);
 	http2.send(null);
 
 	return return_value;

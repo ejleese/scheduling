@@ -9,6 +9,11 @@
 
 . /usr/local/appl/www/cgi-bin/fpsetenv.bat
 
+LANG=$4
+export LANG
+
+echo "In sched_completeTrav.sh: $$ $1 $2 $3 $4" | mutt -s "sched_completeTrav.sh" ericl@borisch.com
+
 /appl/fp/dreport scheduling -fp completeTrav -u -sr 1 -r "$$" -rw "$1" -rx "$2" -ry "$3" >> /dev/null
 
 # $$=pid  $1=rec $2=trav $3=type

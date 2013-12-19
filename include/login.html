@@ -16,18 +16,39 @@
   }
   </style>
 
+<script>var lang = $.cookie('lang_cookie')
+	if (lang=="SP")
+	{
+		var text1="Nueva prioridad";
+		var text2="Caliente:";
+		var text3="# Empleado:";
+		var text4="Contrase&ntildea:";
+		var text5="Enviar";
+		var text6="Cancelar";
+	}
+	else
+	{
+		text1="New Priority:";
+		text2="Hot:";
+		text3="Clock #:";
+		text4="Password:";
+		text5="Submit";
+		text6="Cancel";
+	}	
+</script>
+
 <div id="popupbox">
 <center>
-New Priority: <br>
+<script>document.write(text1+ "<br>")</script>
 <input id="newpri" size="4" /><br>
 <br />
-Hot: <input id="hottog" type="checkbox" /><br>
+<script>document.write(text2+ "<input id='hottog' type='checkbox' /><br>")</script>
 <br />
-Clock #: <input id="loginClk" size="4" /><br>
-Password: <input id="loginPass" type="password" size="4" /><br>
+<script>document.write(text3+ "<input id='loginClk' size='4' /><br>")</script>
+<script>document.write(text4+ "<input id='loginPass' type='password' size='4' /><br>")</script>
 <br />
 </center>
-<center><input type='button' value='Submit' onclick="ajaxLoginPost()"></center>
+<script>document.write("<center><input type='button' value='"+text5+"' onclick='ajaxLoginPost()'></center>")</script>
 <br />
-<center><a href="javascript:clkLogin('hide');">Cancel</a></center>
+<script>document.write("<center><a href=\"javascript:clkLogin('hide');\">"+text6+"</a></center>")</script>
 </div>

@@ -97,7 +97,7 @@ function ajaxLoginPost() {
 	if (document.getElementById('hottog').checked==true) hotvalue="Y";
 	else hotvalue="N";
   var nocachevar = new Date().getTime();
-	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotvalue+"&nocache="+nocachevar;
+	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotvalue+"&lang="+lang+"&nocache="+nocachevar;
 	http.open("GET", "/scheduling/getLogin.php?"+parameters, false); // open request
 	http.send(null); // send request
 

@@ -5,5 +5,7 @@
 // author: Eric Leese 9/11/13
 
 $trav = $_GET['trav'];
-passthru("/appl/www/cgi-bin/sched_getTrav.sh '$trav'");
+$lang = $_GET['lang'];
+
+passthru("/appl/www/cgi-bin/sched_getTrav.sh '$trav' '$lang'");
 ?>

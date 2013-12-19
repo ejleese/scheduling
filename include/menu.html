@@ -7,7 +7,8 @@
 -->
 
 <script>
-	if ($.cookie('lang_cookie')=="SP")
+  var lang=$.cookie('lang_cookie');
+	if (lang=="SP")
 	{
 		var text1="Introduzca"; // Introduzca el producto
 		var text2="Completado";
@@ -30,10 +31,10 @@
 		<a href="/scheduling/prod_login.php?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>"><script>document.write(text1)</script></a>
 	</td>
   <td>
-		<a href="/cgi-bin/sched_complete?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>"><script>document.write(text2)</script></a>
+		<script>document.write("<a href=\"/scheduling/complete.php?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>&lang="+lang+"\">"+text2+"</a>")</script>
 	</td>
   <td>
-		<a href="/cgi-bin/sched_open?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>"><script>document.write(text3)</script></a>
+		<script>document.write("<a href=\"/scheduling/open.php?sched=<?php echo $type ?>&desc=<?php echo $type_long ?>&lang="+lang+"\">"+text3+"</a>")</script>
 	</td>
 	</tr>
 </table>
