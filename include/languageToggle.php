@@ -1,6 +1,6 @@
 <script src="/scheduling/javascript/jquery-1.10.2.min.js"></script>
 <script src="/scheduling/javascript/jquery.cookie.js"></script>
-
+<!-- TODO: convert jquery code to PHP -->
 <?php include_once '/appl/fp/lib/phpsetvar.php';
 $mypage=getenv("REQUEST_URI");
 ?>
