@@ -41,6 +41,7 @@ if (lang=="SP")
 }
 else // english presumed
 {
+	lang="EN"; // not necessary?
 	nextlang="SP";
 	nextlanglong="[a Espa&ntildeol]";
 }
