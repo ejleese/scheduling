@@ -1,0 +1,20 @@
+<!-- headermenustyle.html  -  menu for scheduling website -->
+<!-- purpose: common file to include to show menu on top of pages -->
+
+<style>
+	.headertable
+		{
+	  width:70%;
+		}
+
+ 	.headertable td 	
+		{
+		width:500px; 
+		text-align:center;
+		border:5px solid black;
+		font-size: 25px; 
+		font-family: Verdana;
+		padding: 10px;
+		}
+</style>
+
