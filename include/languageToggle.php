@@ -1,5 +1,3 @@
-<html>
-
 <script src="/scheduling/javascript/jquery-1.10.2.min.js"></script>
 <script src="/scheduling/javascript/jquery.cookie.js"></script>
 
@@ -58,4 +56,4 @@ function toggleLang()
 }
 
 </script>
-</html>
+
