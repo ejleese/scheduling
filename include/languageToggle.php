@@ -47,7 +47,11 @@ else // english presumed
 $.cookie('lang_cookie',lang,{path:'/'}); // make sure cookie is set either way, across whole path since app spans some folders (cgi, scheduling)
 
 var url="<?php echo $mypage; ?>"; //from above PHP code
-document.write("<i><a href='"+url+"' style='float:left; font-family:Verdana; font-size:12px;' onclick='toggleLang()'>"+ nextlanglong +"</a></i>");
+
+//only needs to be enabled for nogales
+loc="<?php echo $PFLOC ?>";
+if (loc == "NOG")
+	document.write("<i><a href='"+url+"' style='float:left; font-family:Verdana; font-size:12px;' onclick='toggleLang()'>"+ nextlanglong +"</a></i>");
 
 function toggleLang()
 {
