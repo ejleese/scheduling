@@ -12,7 +12,7 @@
 LANG=$4
 export LANG
 
-echo "In sched_completeTrav.sh: $$ $1 $2 $3 $4" | mutt -s "sched_completeTrav.sh" ericl@borisch.com
+#echo "In sched_completeTrav.sh: $$ $1 $2 $3 $4" | mutt -s "sched_completeTrav.sh" ericl@borisch.com
 
 /appl/fp/dreport scheduling -fp completeTrav -u -sr 1 -r "$$" -rw "$1" -rx "$2" -ry "$3" >> /dev/null
 
