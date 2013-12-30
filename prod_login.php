@@ -91,7 +91,7 @@ else
   <?php echo $text4 ?><input type="text" id="qty" disabled="true" onfocus="this.style.border='5px groove red'" onblur="this.style.border='1px solid gray'">
   <?php echo $text5 ?><input type="text" id="hot" disabled="true">
   <br><br>
-	<input type='button' id=\"btn_trav_add\" value='<?php echo $text6 ?>' onclick=\"submitTrav('<?php echo $type ?>', '<?php echo $type_long ?>')\">
+	<input type='button' id='btn_trav_add' value='<?php echo $text6 ?>' onclick='submitTrav(<?php echo "\"" . $type . "\"" ?>, <?php echo "\"" . $type_long . "\"" ?>)'>
 	<input type='button' id='btn_reset' value='<?php echo $text7 ?>' onclick='resetForm()'>
 	<br><br>
 	<?php echo $text8 ?>
