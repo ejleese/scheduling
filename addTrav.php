@@ -12,7 +12,7 @@ $qty = $_GET['qty'];
 $sched = $_GET['sched'];
 $lang= $_GET['lang'];
 
-exec("echo '$lang' | mutt -s 'addTrav.php' ericl@borisch.com");
+//exec("echo '$lang' | mutt -s 'addTrav.php' ericl@borisch.com");
 
 passthru("/appl/www/cgi-bin/sched_addTrav.sh '$trav' '$qty' '$sched' '$lang'");
 ?>
