@@ -25,9 +25,9 @@ $schedules_GR= array(
 # DO NOT duplicate abbreviations found in _GR schedule above!
 $schedules_NOG= array(
                   "SRN"=>"Source_Nogales",
-									"CON"=>"Coating_Nogales",
-									"AON"=>"AOI_Nogales",
-									"G1N"=>"G10_Nogales");
+                  "CON"=>"Coating_Nogales",
+                  "AON"=>"AOI_Nogales",
+                  "G1N"=>"G10_Nogales");
 
 if ($PFLOC == "NOG") 
 	$schedules = $schedules_NOG;
