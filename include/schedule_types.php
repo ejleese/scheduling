@@ -20,7 +20,8 @@ $schedules_GR= array(
                   "SOL"=>"Select_Solder",
                   "WSO"=>"Wave_Solder",
                   "COT"=>"Coating",
-                  "CAC"=>"Cut_and_Clinch");
+                  "CAC"=>"Cut_and_Clinch",
+                  "NPN"=>"NPN");
 
 # DO NOT duplicate abbreviations found in _GR schedule above!
 $schedules_NOG= array(
