@@ -14,6 +14,23 @@
   font-family: arial;
   visibility: hidden;
   }
+
+	#popupboxExp{
+  margin: 0;
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 50px;
+  padding-top: 10px;
+  width: 20%;
+  height: 150px;
+  position: absolute;
+  background: #FBFBF0;
+  border: solid #000000 2px;
+  z-index: 9;
+  font-family: arial;
+  visibility: hidden;
+
+	}
   </style>
 
 <script>var lang = $.cookie('lang_cookie')
@@ -52,3 +69,19 @@
 <br />
 <script>document.write("<center><a href=\"javascript:clkLogin('hide');\">"+text6+"</a></center>")</script>
 </div>
+
+
+<div id="popupboxExp">
+<center>
+<script>document.write(text3+ "<input id='loginClkExp' size='4' /><br>")</script>
+<script>document.write(text4+ "<input id='loginPassExp' type='password' size='4' /><br>")</script>
+<br />
+</center>
+<script>document.write("<center><input type='button' value='Export' onclick='ajaxLoginPostExp()'></center>")</script>
+<br />
+<script>document.write("<center><a href=\"javascript:clkLoginExp('hide');\">"+text6+"</a></center>")</script>
+</div>
+
+
+
+

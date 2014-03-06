@@ -117,7 +117,7 @@ function validateQty()
 }
 
 // add form info to active  list
-function submitTrav(type,typelong)
+function submitTrav(schedtype,typelong)
 {
 	// verify not already on list
 	// run dreport to add to scheduling file 
@@ -173,7 +173,7 @@ function submitTrav(type,typelong)
 
 	var lang = $.cookie('lang_cookie');
 
-	http2.open("GET", "/scheduling/addTrav.php?trav="+escape(travnum)+"&qty="+escape(qty)+"&nocache="+nocachevar+"&sched="+type+"&lang="+lang, false);
+	http2.open("GET", "/scheduling/addTrav.php?trav="+escape(travnum)+"&qty="+escape(qty)+"&nocache="+nocachevar+"&sched="+schedtype+"&lang="+lang, false);
 	http2.send(null);
 
 	return return_value;

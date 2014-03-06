@@ -6,7 +6,7 @@
 
 var lang=$.cookie('lang_cookie');
 
-function complete(recnum,travnum,type)
+function complete(recnum,travnum,schedtype)
 {
 
   var http = getHTTPObject();  // create the http object
@@ -33,7 +33,7 @@ function complete(recnum,travnum,type)
   }
 //  var nocachevar = Date.now(); // not supported in IE 8
   var nocachevar = new Date().getTime();
-  http.open("GET", "/scheduling/completeTrav.php?rec="+recnum+"&trav="+escape(travnum)+"&type="+escape(type)+"&lang="+lang+"&nocache="+nocachevar, false);
+  http.open("GET", "/scheduling/completeTrav.php?rec="+recnum+"&trav="+escape(travnum)+"&type="+escape(schedtype)+"&lang="+lang+"&nocache="+nocachevar, false);
   http.send(null);
 
 	return true;
