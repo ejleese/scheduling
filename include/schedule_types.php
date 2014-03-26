@@ -22,7 +22,8 @@ $schedules_GR= array(
                   "COT"=>"Coating",
                   "CAC"=>"Cut_and_Clinch",
                   "NPN"=>"NPN",
-                  "GRO"=>"RO");
+                  "GRO"=>"RO",
+                  "MSK"=>"Masking");
 
 # DO NOT duplicate abbreviations found in _GR schedule above!
 $schedules_NOG= array(
