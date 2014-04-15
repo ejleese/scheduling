@@ -40,18 +40,32 @@ function clkLogin(showhide, recnum, schedtype, desc, hotval, postLoginRedirect)
 	passRecNum = recnum;
   theType = schedtype;
   theDesc = desc;
+/*
   if (hotval == "Y") hotflag=true;
 	else hotflag=false;
+*/
+
 	hotval_orig = hotval;
 
 	if(showhide == "show")
 	{
 		document.getElementById('newpri').value="";
 		document.getElementById('loginPass').value="";
+/*
 		if (hotflag==true) 
 			document.getElementById('hottog').checked=true;
 		else
 			document.getElementById('hottog').checked=false;
+*/
+	//set initial state of radio buttons to match current hot value
+	switch (hotval)
+	{
+		case "Y":document.getElementById('hotradio').checked=true;break;//hot
+		case "W":document.getElementById('warmradio').checked=true;break;//warm
+		case "N":	//fallthru
+		default:document.getElementById('normradio').checked=true;break;//normal
+	}
+
 		document.getElementById('popupbox').style.visibility="visible";
 		document.getElementById('newpri').focus()
 		gPostLoginRedirect=postLoginRedirect;
@@ -120,8 +134,13 @@ function ajaxLoginPost() {
 
 	var hotval_changed=false;
 
+/*
 	if (document.getElementById("hottog").checked==true) hotval_new="Y";
 	else hotval_new = "N";
+*/
+  if (document.getElementById('hotradio').checked==true) hotval_new="Y";
+  else if (document.getElementById('warmradio').checked==true) hotval_new="W";
+  else hotval_new="N";
 
   if (hotval_new != hotval_orig) hotval_changed=true;
 
@@ -167,11 +186,13 @@ function ajaxLoginPost() {
 	var clkvalue=encodeURIComponent(loginClk.value);
 	var passvalue=encodeURIComponent(loginPass.value);
   var privalue=encodeURIComponent(newpri.value);
+/*
   var hotvalue;
 	if (document.getElementById('hottog').checked==true) hotvalue="Y";
 	else hotvalue="N";
+*/
   var nocachevar = new Date().getTime();
-	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotvalue+"&lang="+lang+"&nocache="+nocachevar;
+	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotval_new+"&lang="+lang+"&nocache="+nocachevar;
 	http.open("GET", "/scheduling/getLogin.php?"+parameters, false); // open request
 	http.send(null); // send request
 

@@ -38,6 +38,8 @@
 	{
 		var text1="Nueva Prioridad:";
 		var text2="Caliente:";
+		var text7="Warm:";
+		var text8="Normal";
 		var text3="# Empleado:";
 		var text4="Contrase&ntildea:";
 		var text5="Enviar";
@@ -47,6 +49,8 @@
 	{
 		text1="New Priority:";
 		text2="Hot:";
+		text7="Warm:";
+		text8="Normal:";
 		text3="Clock #:";
 		text4="Password:";
 		text5="Submit";
@@ -59,7 +63,16 @@
 <script>document.write(text1+ "<br>")</script>
 <input id="newpri" size="4" /><br>
 <br />
+
+<!--
 <script>document.write(text2+ "<input id='hottog' type='checkbox' /><br>")</script>
+-->
+<form id='radiobtns'>
+<script>document.write(text2+ "<input id='hotradio' name='hottog' type='radio' value='hot' /><br>")</script>
+<script>document.write(text7+ "<input id='warmradio' name='hottog' type='radio' value='warm' /><br>")</script>
+<script>document.write(text8+ "<input id='normradio' name='hottog' type='radio' value='normal' /><br>")</script>
+</form>
+
 <br />
 <script>document.write(text3+ "<input id='loginClk' size='4' /><br>")</script>
 <script>document.write(text4+ "<input id='loginPass' type='password' size='4' /><br>")</script>
