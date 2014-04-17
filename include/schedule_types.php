@@ -32,7 +32,8 @@ $schedules_NOG= array(
                   "AON"=>"AOI_Nogales",
                   "GRN"=>"G10_L3AR_Nogales",
                   "GSN"=>"G10_L3AS_Nogales",
-                  "TSN"=>"Test_Nogales");
+                  "TSN"=>"Test_Nogales",
+									"PYN"=>"Parylene_Nogales");
 
 if ($PFLOC == "NOG") 
 	$schedules = $schedules_NOG;
