@@ -4,6 +4,7 @@
 // author:  ejl 9/23/2013
 //
 // 03/06/14 ejl piggybacked the export button functions here
+// 04/24/14 ejl add status change function
 
 var gPostLoginRedirect;
 var passRecNum; // make visible so i can pass from clkLogin to AjaxLoginPost
@@ -208,4 +209,34 @@ function getHTTPObject()
     catch(e) { xmlhttp = false;}
   }
   return xmlhttp;
+}
+
+// change status on open page
+function changeStatus(recnum,newstatus)
+{
+	var http = getHTTPObject();
+	var return_value = true;
+
+	http.onreadystatechange=function()
+	{
+		if (http.readyState==4)
+		{
+			results=http.responseText.split(",");
+			if (results[0] != "success\n")
+			{
+				alert(results[0]);
+				window.location.reload(true);
+				return_value=false;
+			}
+			else
+				window.location.reload(true);	//reload page
+		}
+	}
+
+	var nocachevar=new Date().getTime();
+
+	http.open("GET","/scheduling/setStatus.php?rec="+recnum+"&status="+newstatus+"&nocache="+nocachevar,false);
+	http.send(null);
+
+	return return_value;
 }

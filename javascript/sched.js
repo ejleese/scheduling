@@ -234,3 +234,4 @@ function sanitize(inVal)
 	} 
 	return true;
 }
+
