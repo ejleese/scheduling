@@ -23,7 +23,10 @@ $schedules_GR= array(
                   "CAC"=>"Cut_and_Clinch",
                   "NPN"=>"NPN",
                   "GRO"=>"RO",
-                  "MSK"=>"Masking");
+                  "MSK"=>"Masking",
+                  "A50"=>"A50",
+                  "G10"=>"G10",
+                  "XRA"=>"Xray");
 
 # DO NOT duplicate abbreviations found in _GR schedule above!
 $schedules_NOG= array(
