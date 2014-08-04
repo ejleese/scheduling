@@ -5,6 +5,7 @@
 //
 // 03/06/14 ejl piggybacked the export button functions here
 // 04/24/14 ejl add status change function
+// 08/01/14 ejl add hold notes
 
 var gPostLoginRedirect;
 var passRecNum; // make visible so i can pass from clkLogin to AjaxLoginPost
@@ -13,6 +14,7 @@ var theDesc; //department description
 var hotval_orig; //hot flag orig value
 var hotval_new; // hot flag new value
 var theReport; //report (Open, Closed90, ClosedAll)
+var theNotes; //hold notes
 
 var lang=$.cookie('lang_cookie'); 
 
@@ -236,6 +238,58 @@ function changeStatus(recnum,newstatus)
 	var nocachevar=new Date().getTime();
 
 	http.open("GET","/scheduling/setStatus.php?rec="+recnum+"&status="+newstatus+"&nocache="+nocachevar,false);
+	http.send(null);
+
+	return return_value;
+}
+
+function holdtextpop(showhide, recnum, notes, postLoginRedirect)
+{
+	passRecNum = recnum;
+ 	theNotes = notes;
+ 	
+	if (showhide=="show")
+	{
+		document.getElementById('holdtext').value=theNotes;
+		document.getElementById('holdtextbox').style.visibility="visible";
+		document.getElementById('holdtext').focus();
+		gPostLoginRedirect=postLoginRedirect;
+	}
+	else if (showhide == "hide")
+	{
+		theNotes="";
+		document.getElementById('holdtextbox').style.visibility="hidden";
+	}
+}
+
+// change hold notes on open page
+function changeholdtext()
+{
+	var http = getHTTPObject();
+	var return_value = true;
+  var notes = document.getElementById('holdtext').value;
+  var recnum=passRecNum;
+
+	http.onreadystatechange=function()
+	{
+		if (http.readyState==4)
+		{
+/*
+			results=http.responseText.split(",");
+			if (results[0] != "success\n")
+			{
+				alert(results[0]);
+				window.location.reload(true);
+				return_value=false;
+			}
+			else
+*/
+				window.location.reload(true);	//reload page
+		}
+	}
+
+	var nocachevar=new Date().getTime();
+	http.open("GET","/scheduling/setNotes.php?rec="+recnum+"&notes=\""+notes+"\"&nocache="+nocachevar,false);
 	http.send(null);
 
 	return return_value;
