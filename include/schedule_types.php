@@ -38,7 +38,8 @@ $schedules_NOG= array(
                   "TSN"=>"Test_Nogales",
                   "PYN"=>"Parylene_Nogales",
                   "SSN"=>"Select_Solder_Nogales",
-                  "WMN"=>"Washer_Machine_Nogales");
+                  "WMN"=>"Washer_Machine_Nogales",
+                  "SMN"=>"Surface_Mount_Nogales");
 
 if ($PFLOC == "NOG") 
 	$schedules = $schedules_NOG;
