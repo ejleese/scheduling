@@ -16,5 +16,17 @@
 		font-family: Verdana;
 		padding: 10px;
 		}
+
+  .headertable2
+		{
+		}
+
+	.headertable2 td
+		{		
+		width:300px; 
+		text-align:center;
+		font-size: 18px; 
+		font-family: Verdana;
+		}
 </style>
 

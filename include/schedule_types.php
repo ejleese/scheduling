@@ -39,7 +39,11 @@ $schedules_NOG= array(
                   "PYN"=>"Parylene_Nogales",
                   "SSN"=>"Select_Solder_Nogales",
                   "WMN"=>"Washer_Machine_Nogales",
-                  "SMN"=>"Surface_Mount_Nogales");
+                  "SMN"=>"Surface_Mount_Nogales",
+                  "MSN"=>"L3AS_Manual_Nogales",
+                  "ISN"=>"L3AS_Inspection_Nogales",
+                  "MRN"=>"L3AR_Manual_Nogales",
+                  "IRN"=>"L3AR_Inspection_Nogales");
 
 if ($PFLOC == "NOG") 
 	$schedules = $schedules_NOG;
@@ -59,7 +63,7 @@ function genList()
 	global $schedules;
 
 	
-	echo "<table class='headertable'>";
+	echo "<table class='headertable2'>";
 
 	foreach ($schedules as $type=>$type_long)
 	{
