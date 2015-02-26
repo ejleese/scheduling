@@ -26,7 +26,8 @@ $schedules_GR= array(
                   "MSK"=>"Masking",
                   "A50"=>"A50",
                   "G10"=>"G10",
-                  "XRA"=>"Xray");
+                  "XRA"=>"Xray",
+                  "G05"=>"G05");
 
 # DO NOT duplicate abbreviations found in _GR schedule above!
 $schedules_NOG= array(
