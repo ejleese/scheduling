@@ -28,7 +28,8 @@ $schedules_GR= array(
                   "G10"=>"G10",
                   "XRA"=>"Xray",
                   "G05"=>"G05",
-                  "RWK"=>"Rework");
+                  "RWK"=>"Rework",
+                  "SHP"=>"Shipping");
 
 # DO NOT duplicate abbreviations found in _GR schedule above!
 $schedules_NOG= array(
