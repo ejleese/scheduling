@@ -69,14 +69,14 @@ if ($lang=="SP")
 }
 else
 {
-	$text1="Scan or Enter traveler / RPN:  ";
-	$text2="Get Trav / RPN info";
+	$text1="Scan or Enter traveler/RPN/stocktkt:  ";
+	$text2="Populate info";
 	$text3="Assembly:  ";
 	$text4="Qty:  ";
 	$text5="Hot?  ";
 	$text6="Add to Tracking List";
 	$text7="Reset Form";
-	$text8="Note: Make sure you have the correct traveler / RPN before hitting the \"Add to Tracking List\" button";
+	$text8="Note: Make sure you have the correct document number before hitting the \"Add to Tracking List\" button";
 }
 ?>
 
