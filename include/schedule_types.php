@@ -71,7 +71,10 @@ function genList()
 
 	foreach ($schedules as $type=>$type_long)
 	{
-		echo "<tr><td><a href='/scheduling/prod_login.php?sched=",$type,"'>",$type_long,"</a></td></tr>";
+		if ($type == "RII")
+			echo "<tr><td><a href='/scheduling/open.php?sched=",$type,"&desc=",$type_long,"'>",$type_long,"</a></td></tr>";
+		else
+			echo "<tr><td><a href='/scheduling/prod_login.php?sched=",$type,"'>",$type_long,"</a></td></tr>";
 	}
 
 	echo "</table>";	
