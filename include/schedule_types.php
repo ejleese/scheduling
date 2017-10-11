@@ -29,6 +29,7 @@ $schedules_GR= array(
                   "XRA"=>"Xray",
                   "G05"=>"G05",
                   "RWK"=>"Rework",
+									"RII"=>"Receiving/Inspection",
                   "SHP"=>"Shipping");
 
 # DO NOT duplicate abbreviations found in _GR schedule above!
