@@ -6,6 +6,7 @@
 // 03/06/14 ejl piggybacked the export button functions here
 // 04/24/14 ejl add status change function
 // 08/01/14 ejl add hold notes
+// 10/12/17 ejl add invr# and type to getLogin call
 
 var gPostLoginRedirect;
 var passRecNum; // make visible so i can pass from clkLogin to AjaxLoginPost
@@ -15,6 +16,7 @@ var hotval_orig; //hot flag orig value
 var hotval_new; // hot flag new value
 var theReport; //report (Open, Closed90, ClosedAll)
 var theNotes; //hold notes
+var invrNum; //invr number
 
 var lang=$.cookie('lang_cookie'); 
 
@@ -38,11 +40,12 @@ function clkLoginExp(showhide, schedtype, report, postLoginRedirect)
 }
 
 //popup login for changing priority/hotness
-function clkLogin(showhide, recnum, schedtype, desc, hotval, postLoginRedirect) 
+function clkLogin(showhide, recnum, schedtype, desc, hotval, invr, postLoginRedirect) 
 {
 	passRecNum = recnum;
   theType = schedtype;
   theDesc = desc;
+  invrNum = invr;
 /*
   if (hotval == "Y") hotflag=true;
 	else hotflag=false;
@@ -78,6 +81,7 @@ function clkLogin(showhide, recnum, schedtype, desc, hotval, postLoginRedirect)
 		passRecNum="";
     theType="";
     theDesc="";
+    invrNum="";
 		document.getElementById('popupbox').style.visibility="hidden";
 	}
 }
@@ -162,11 +166,13 @@ function ajaxLoginPost() {
 		text1="Must provide new priority or hot value";
 		text2="Must provide clock #";
 		text3="Must provide password";
+		text4="Priority must be 1 or greater";
 	}
 
   if( newpri.value == "" && hotval_changed != true) { alert(text1); return;}
 	if( loginClk.value == "" ) { alert(text2); return; }
 	if( loginPass.value == "" ) { alert(text3); return; }
+  if( newpri.value != "" && newpri.value <="0") { alert(text4); return;}
 	var http = getHTTPObject(); // create the HTTP Object
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
@@ -195,7 +201,7 @@ function ajaxLoginPost() {
 	else hotvalue="N";
 */
   var nocachevar = new Date().getTime();
-	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotval_new+"&lang="+lang+"&nocache="+nocachevar;
+	var parameters="recnum="+recnum+"&newpri="+privalue+"&loginClk="+clkvalue+"&loginPass="+passvalue+"&hotPass="+hotval_new+"&invrnum="+invrNum+"&type="+theType+"&lang="+lang+"&nocache="+nocachevar;
 	http.open("GET", "/scheduling/getLogin.php?"+parameters, false); // open request
 	http.send(null); // send request
 

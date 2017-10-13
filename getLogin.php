@@ -11,7 +11,9 @@ $user = $_GET['loginClk'];
 $pwd = $_GET['loginPass'];
 $hot = $_GET['hotPass'];
 $lang = $_GET['lang'];
+$invr = $_GET['invrnum'];
+$type = $_GET['type'];
 
-passthru("/appl/www/cgi-bin/sched_login '$recnum' '$newpri' '$user' '$pwd' '$hot' '$lang'");
+passthru("/appl/www/cgi-bin/sched_login '$recnum' '$newpri' '$user' '$pwd' '$hot' '$lang' '$invr' '$type'");
 //passthru("/appl/www/cgi-bin/sched_login");
 ?>
